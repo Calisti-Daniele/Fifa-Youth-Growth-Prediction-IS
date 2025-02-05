@@ -32,12 +32,6 @@
             <p class="text-gray-700"></p>
         </div>
 
-        <!-- Contenuto a destra -->
-        <div class="flex-1 text-right">
-            <p class="text-gray-700">
-                <jsp:include page="/components/dropdown.jsp" />
-            </p>
-        </div>
 
     </div>
 

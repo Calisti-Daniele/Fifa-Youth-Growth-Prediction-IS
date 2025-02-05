@@ -49,7 +49,6 @@ public class RealtimeSearchControl extends HttpServlet {
             List<FifaPlayer> players = playerDAO.getPlayersByNameLike(query.trim());
 
             // Log per debugging
-            System.out.println("Giocatori trovati: " + players.size());
 
             // Creazione della risposta JSON
             Gson gson = new Gson();
