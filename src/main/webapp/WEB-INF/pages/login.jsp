@@ -16,7 +16,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="bg-white text-white">
 
 <div id="app">
     <jsp:include page="/components/navbar.jsp" />

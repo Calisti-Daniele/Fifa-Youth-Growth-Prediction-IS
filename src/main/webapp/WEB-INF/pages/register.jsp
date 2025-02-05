@@ -16,7 +16,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="bg-white text-white">
 
 <div id="app">
     <jsp:include page="/components/navbar.jsp" />
@@ -27,29 +27,35 @@
 
     <div class="flex justify-center mt-10">
         <div class="bg-lime-800 p-6 rounded-lg shadow-lg w-1/3">
-            <form action="${pageContext.request.contextPath}/register" method="post">
+            <form id="registerForm" action="${pageContext.request.contextPath}/register" method="post">
                 <div class="mb-4">
                     <label class="block text-sm font-medium">Nome</label>
-                    <input type="text" name="nome" required class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:border-lime-500">
+                    <input type="text" name="nome" id="nome" required class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:border-lime-500">
                 </div>
 
                 <div class="mb-4">
                     <label class="block text-sm font-medium">Cognome</label>
-                    <input type="text" name="cognome" required class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:border-lime-500">
+                    <input type="text" name="cognome" id="cognome" required class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:border-lime-500">
                 </div>
 
                 <div class="mb-4">
                     <label class="block text-sm font-medium">Email</label>
-                    <input type="email" name="email" required class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:border-lime-500">
+                    <input type="email" name="email" id="email" required class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:border-lime-500">
                 </div>
 
                 <div class="mb-4">
                     <label class="block text-sm font-medium">Password</label>
-                    <input type="password" name="password" required class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:border-lime-500">
+                    <input type="password" name="password" id="password" required class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:border-lime-500">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium">Conferma Password</label>
+                    <input type="password" name="confirm_password" id="confirm_password" required class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:border-lime-500">
                 </div>
 
                 <button type="submit" class="w-full bg-green-700 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Registrati</button>
             </form>
+
 
             <p class="text-sm text-center mt-4">
                 Hai già un account? <a href="${pageContext.request.contextPath}/redirectLogin" class="text-green-400 hover:underline">Accedi</a>
@@ -58,7 +64,7 @@
     </div>
 </div>
 
-<script src="${pageContext.request.contextPath}/js/vue.js"></script>
+<script src="${pageContext.request.contextPath}/js/register.js"></script>
 
 <%
     String errore = (String) request.getAttribute("errore");

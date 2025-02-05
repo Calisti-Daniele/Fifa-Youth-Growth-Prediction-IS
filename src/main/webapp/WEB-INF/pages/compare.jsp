@@ -21,23 +21,36 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <style>
-        /* Rende visibile il testo nelle select */
-        .select2-container--default .select2-selection--single .select2-selection__rendered {
-            color: black !important;
+        /* Cambia il colore del testo digitato nella barra di ricerca di Select2 */
+        .select2-container--default .select2-search--inline .select2-search__field {
+            color: black !important;  /* Rende il testo visibile */
         }
+
+        /* Cambia il colore del testo dei risultati */
+        .select2-container--default .select2-results__option {
+            color: black !important;  /* Rende i risultati visibili */
+        }
+
+        /* Cambia il colore dello sfondo e del bordo della select */
         .select2-container--default .select2-selection--single {
             background-color: white !important;
             border: 2px solid #15803d !important;
+            color: black !important;
         }
-        .select2-dropdown {
-            border: 2px solid #15803d !important;
+
+        /* Cambia il colore del placeholder */
+        .select2-container--default .select2-selection--single .select2-selection__placeholder {
+            color: black !important;
         }
+
+
     </style>
 
 </head>
-<body class="bg-green-900 text-white h-screen flex flex-col">
+<body class="bg-white text-white h-screen flex flex-col">
 
 <div id="app" class="flex flex-col flex-grow">
+    <jsp:include page="/components/navbar.jsp" />
     <!-- Selezione giocatori -->
     <div class="flex justify-center space-x-4 my-6">
         <select id="search1" class="select2 w-1/3 text-black"></select>

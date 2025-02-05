@@ -16,15 +16,42 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <style>
+        /* Cambia il colore del testo digitato nella barra di ricerca di Select2 */
+        .select2-container--default .select2-search--inline .select2-search__field {
+            color: black !important;  /* Rende il testo visibile */
+        }
+
+        /* Cambia il colore del testo dei risultati */
+        .select2-container--default .select2-results__option {
+            color: black !important;  /* Rende i risultati visibili */
+        }
+
+        /* Cambia il colore dello sfondo e del bordo della select */
+        .select2-container--default .select2-selection--single {
+            background-color: white !important;
+            border: 2px solid #15803d !important;
+            color: black !important;
+        }
+
+        /* Cambia il colore del placeholder */
+        .select2-container--default .select2-selection--single .select2-selection__placeholder {
+            color: black !important;
+        }
+
+
+    </style>
+
 </head>
-<body class="bg-gray-900 text-white h-screen flex flex-col">
+<body class="bg-white text-white h-screen flex flex-col">
 
 <div id="app" class="flex flex-col flex-grow">
     <jsp:include page="/components/navbar.jsp" />
 
     <div class="flex flex-col items-center bg-lime-900 p-4">
         <h1 class="text-2xl font-bold text-white">Fifa Youth Growth Prediction</h1>
-        <select id="search" class="w-1/2 text-black mt-4"></select>
+        <select id="search" class="w-1/2 mt-4"></select>
     </div>
 
     <!-- Filtro delle statistiche -->

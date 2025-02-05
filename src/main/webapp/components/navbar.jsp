@@ -16,7 +16,7 @@
                         <a href="homepagecontrol" class="rounded-md bg-lime-700 px-3 py-2 text-sm font-medium text-white">Dashboard</a>
 
                         <% if (utente != null) { %>
-                        <a href="comparecontrol" class="rounded-md bg-lime-700 px-3 py-2 text-sm font-medium text-white">Comparazione giocatori</a>
+                            <a href="comparecontrol" class="rounded-md bg-lime-700 px-3 py-2 text-sm font-medium text-white">Comparazione giocatori</a>
                         <% } %>
 
                     </div>
@@ -25,11 +25,9 @@
 
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <% if (utente == null) { %>
-                <a href="${pageContext.request.contextPath}/redirectLogin" class="bg-green-700 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Login</a>
+                    <a href="${pageContext.request.contextPath}/redirectLogin" class="bg-green-700 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Login</a>
                 <% } else { %>
-                <form action="${pageContext.request.contextPath}/logout" method="post">
-                    <button type="submit" class="bg-red-700 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Logout</button>
-                </form>
+                    <a href="areaPersonale" class="rounded-md bg-lime-700 px-3 py-2 text-sm font-medium text-white">Area Personale</a>
                 <% } %>
             </div>
         </div>

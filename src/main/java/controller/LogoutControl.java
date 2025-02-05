@@ -12,7 +12,7 @@ import java.io.IOException;
 @WebServlet("/logout")
 public class LogoutControl extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate(); // Elimina la sessione

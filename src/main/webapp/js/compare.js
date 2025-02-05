@@ -69,6 +69,15 @@ const app = Vue.createApp({
                     } else {
                         self.player2 = selectedData;
                     }
+                }).on('select2:open', function () {
+                    setTimeout(() => {
+                        $('.select2-search__field').css({
+                            'color': 'black',
+                            'background-color': 'white',
+                            'border': '1px solid #15803d',
+                            'padding': '5px'
+                        });
+                    }, 10);
                 });
             }
 

@@ -18,7 +18,7 @@ const app = Vue.createApp({
     methods: {
         initializeSearch() {
             $('#search').select2({
-                placeholder: 'Search for a player...',
+                placeholder: 'Cerca un giocatore...',
                 minimumInputLength: 3,
                 ajax: {
                     url: 'realtimesearch',
@@ -62,7 +62,17 @@ const app = Vue.createApp({
             }).on('select2:select', (e) => {
                 const selectedData = e.params.data;
                 this.updateCurrentPlayer(selectedData);
+            }).on('select2:open', function () {
+                setTimeout(() => {
+                    $('.select2-search__field').css({
+                        'color': 'black',
+                        'background-color': 'white',
+                        'border': '1px solid #15803d',
+                        'padding': '5px'
+                    });
+                }, 10);
             });
+
         },
         updateCurrentPlayer(player) {
             this.currentPlayer = {
@@ -82,7 +92,6 @@ const app = Vue.createApp({
     },
     mounted() {
         this.initializeSearch();
-        console.log(this.availableStats)
     }
 });
 
