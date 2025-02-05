@@ -1,26 +1,32 @@
 const app = Vue.createApp({
-    el: '#app',
     data() {
         return {
             currentPlayer: null,
             default_player: "images/default_player.svg",
-            positions_color: ['blue','green','cyan']
+            positions_color: ['blue', 'green', 'cyan'],
+            selectedStats: ['overall', 'shooting', 'passing', 'dribbling', 'defending', 'physic'], // Default stats
+            availableStats: [
+                { label: "Overall", value: "overall" },
+                { label: "Shooting", value: "shooting" },
+                { label: "Passing", value: "passing" },
+                { label: "Dribbling", value: "dribbling" },
+                { label: "Defending", value: "defending" },
+                { label: "Physic", value: "physic" }
+            ]
         };
     },
     methods: {
         initializeSearch() {
             $('#search').select2({
-                placeholder: 'Search for anything...',
-                minimumInputLength: 5,
+                placeholder: 'Search for a player...',
+                minimumInputLength: 3,
                 ajax: {
                     url: 'realtimesearch',
                     type: 'GET',
                     dataType: 'json',
                     delay: 250,
                     data: function (params) {
-                        return {
-                            query: params.term
-                        };
+                        return { query: params.term };
                     },
                     processResults: function (data) {
                         return {
@@ -42,15 +48,13 @@ const app = Vue.createApp({
                     cache: true
                 },
                 templateResult: function (item) {
-                    if (!item.id) {
-                        return item.text;
-                    }
-                    return $(
-                        `<div class='flex items-center space-x-2'>
-                    <img src='${item.image}' alt='${item.text}' class='w-6 h-6 rounded-full'>
-                    <span>${item.text}</span>
-                </div>`
-                    );
+                    if (!item.id) return item.text;
+                    return $(`
+                        <div class='flex items-center space-x-2'>
+                            <img src='${item.image}' alt='${item.text}' class='w-6 h-6 rounded-full'>
+                            <span>${item.text}</span>
+                        </div>
+                    `);
                 },
                 templateSelection: function (item) {
                     return item.text || item.id;
@@ -61,14 +65,11 @@ const app = Vue.createApp({
             });
         },
         updateCurrentPlayer(player) {
-
-            console.log(player);
-            // Aggiorna il giocatore corrente con i dati selezionati
             this.currentPlayer = {
                 id: player.id,
                 name: player.text,
                 image: player.image || this.default_player,
-                nationality: player.nationality_name,
+                nationality_name: player.nationality_name,
                 positions: player.positions,
                 overall: player.overall,
                 defending: player.defending,
@@ -81,6 +82,7 @@ const app = Vue.createApp({
     },
     mounted() {
         this.initializeSearch();
+        console.log(this.availableStats)
     }
 });
 

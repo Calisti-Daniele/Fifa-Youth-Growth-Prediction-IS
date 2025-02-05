@@ -1,11 +1,31 @@
 const app = Vue.createApp({
-    el: "#app",
     data() {
         return {
             player1: null,
             player2: null,
             default_player: "images/default_player.svg",
+            selectedStats: [],
+            availableStats: [
+                { label: "Overall", value: "overall" },
+                { label: "Shooting", value: "shooting" },
+                { label: "Passing", value: "passing" },
+                { label: "Dribbling", value: "dribbling" },
+                { label: "Defending", value: "defending" },
+                { label: "Physic", value: "physic" }
+            ]
         };
+    },
+    watch: {
+        player1(newVal) {
+            if (newVal && this.player2) {
+                this.selectedStats = this.availableStats.map(stat => stat.value);
+            }
+        },
+        player2(newVal) {
+            if (newVal && this.player1) {
+                this.selectedStats = this.availableStats.map(stat => stat.value);
+            }
+        }
     },
     methods: {
         initializeSearch() {
@@ -59,6 +79,36 @@ const app = Vue.createApp({
             if (value1 > value2) return "text-green-500 font-bold";
             if (value1 < value2) return "text-red-500 font-bold";
             return "";
+        },
+        exportToExcel() {
+            if (!this.player1 || !this.player2 || this.selectedStats.length === 0) {
+                alert("Seleziona due giocatori e almeno una statistica.");
+                return;
+            }
+
+            const form = document.createElement("form");
+            form.method = "POST";
+            form.action = contextPath + "/exportExcel";
+
+            const addHiddenInput = (name, value) => {
+                const input = document.createElement("input");
+                input.type = "hidden";
+                input.name = name;
+                input.value = value;
+                form.appendChild(input);
+            };
+
+            addHiddenInput("player1_name", this.player1.text);
+            addHiddenInput("player2_name", this.player2.text);
+
+            this.selectedStats.forEach(stat => {
+                addHiddenInput(`stats[]`, stat);
+                addHiddenInput(`player1_${stat}`, this.player1[stat]);
+                addHiddenInput(`player2_${stat}`, this.player2[stat]);
+            });
+
+            document.body.appendChild(form);
+            form.submit();
         }
     },
     mounted() {

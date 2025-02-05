@@ -29,58 +29,75 @@
             background-color: white !important;
             border: 2px solid #15803d !important;
         }
-        /* Cambia il colore del bordo dei risultati Select2 */
         .select2-dropdown {
             border: 2px solid #15803d !important;
         }
     </style>
 
 </head>
-<body class="bg-green-900 text-white">
+<body class="bg-green-900 text-white h-screen flex flex-col">
 
-<div id="app">
+<div id="app" class="flex flex-col flex-grow">
     <!-- Selezione giocatori -->
     <div class="flex justify-center space-x-4 my-6">
         <select id="search1" class="select2 w-1/3 text-black"></select>
         <select id="search2" class="select2 w-1/3 text-black"></select>
     </div>
 
-    <!-- Confronto giocatori -->
-    <div v-if="player1 || player2" class="w-full bg-green-800 p-6 rounded-lg shadow-lg flex justify-between">
-        <!-- Giocatore 1 -->
-        <div class="w-1/2 text-center">
-            <img :src="player1 ? player1.image : '${pageContext.request.contextPath}/' + default_player" width="287px">
-            <h2 class="text-xl font-bold mt-2">{{ player1.name }}</h2>
-            <p class="text-gray-300">{{ player1.nationality_name }}</p>
-            <p class="bg-green-700 px-3 py-1 inline-block mt-2 rounded">{{ player1.player_positions }}</p>
-
-            <div class="mt-4 text-left space-y-2">
-                <p class="font-semibold" :class="highlight(player1.overall, player2.overall)">Overall: {{ parseFloat(player1.overall).toFixed(2) }}</p>
-                <p class="font-semibold" :class="highlight(player1.shooting, player2.shooting)">Shooting: {{ parseFloat(player1.shooting).toFixed(2) }}</p>
-                <p class="font-semibold" :class="highlight(player1.passing, player2.passing)">Passing: {{ parseFloat(player1.passing).toFixed(2) }}</p>
-                <p class="font-semibold" :class="highlight(player1.dribbling, player2.dribbling)">Dribbling: {{ parseFloat(player1.dribbling).toFixed(2) }}</p>
-                <p class="font-semibold" :class="highlight(player1.defending, player2.defending)">Defending: {{ parseFloat(player1.defending).toFixed(2) }}</p>
-                <p class="font-semibold" :class="highlight(player1.physic, player2.physic)">Physic: {{ parseFloat(player1.physic).toFixed(2) }}</p>
-            </div>
+    <!-- Filtro statistiche -->
+    <div v-if="player1 && player2" class="bg-gray-800 p-4 text-center">
+        <h2 class="text-lg font-semibold">Seleziona le statistiche da visualizzare</h2>
+        <div class="flex justify-center space-x-4 mt-2">
+            <label v-for="stat in availableStats" :key="stat.value" class="flex items-center space-x-2">
+                <input type="checkbox" v-model="selectedStats" :value="stat.value" class="form-checkbox h-5 w-5 text-green-500">
+                <span class="text-white">{{ stat.label }}</span>
+            </label>
         </div>
+    </div>
 
-        <!-- Giocatore 2 -->
-        <div class="w-1/2 text-center">
-            <img :src="player2 ? player2.image : '${pageContext.request.contextPath}/' + default_player" width="287px">
-            <h2 class="text-xl font-bold mt-2">{{ player2.name }}</h2>
-            <p class="text-gray-300">{{ player2.nationality_name }}</p>
-            <p class="bg-green-700 px-3 py-1 inline-block mt-2 rounded">{{ player2.player_positions }}</p>
+    <div v-if="player1 && player2 && selectedStats.length > 0" class="text-center mt-4">
+        <button @click="exportToExcel" class="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded">
+            Esporta in Excel
+        </button>
+    </div>
 
-            <div class="mt-4 text-left space-y-2">
-                <p class="font-semibold" :class="highlight(player2.overall, player1.overall)">Overall: {{ parseFloat(player2.overall).toFixed(2) }}</p>
-                <p class="font-semibold" :class="highlight(player2.shooting, player1.shooting)">Shooting: {{ parseFloat(player2.shooting).toFixed(2) }}</p>
-                <p class="font-semibold" :class="highlight(player2.passing, player1.passing)">Passing: {{ parseFloat(player2.passing).toFixed(2) }}</p>
-                <p class="font-semibold" :class="highlight(player2.dribbling, player1.dribbling)">Dribbling: {{ parseFloat(player2.dribbling).toFixed(2) }}</p>
-                <p class="font-semibold" :class="highlight(player2.defending, player1.defending)">Defending: {{ parseFloat(player2.defending).toFixed(2) }}</p>
-                <p class="font-semibold" :class="highlight(player2.physic, player1.physic)">Physic: {{ parseFloat(player2.physic).toFixed(2) }}</p>
+    <!-- Confronto giocatori -->
+    <div v-if="player1 && player2" class="flex-grow flex items-center justify-center">
+        <div class="w-4/5 bg-green-800 p-6 rounded-lg shadow-lg flex justify-between">
+            <!-- Giocatore 1 -->
+            <div class="w-1/2 text-center">
+                <img :src="player1 ? player1.image : '${pageContext.request.contextPath}/' + default_player" class="w-40 mx-auto">
+                <h2 class="text-xl font-bold mt-2">{{ player1.name }}</h2>
+                <p class="text-gray-300">{{ player1.nationality_name }}</p>
+                <p class="bg-green-700 px-3 py-1 inline-block mt-2 rounded">{{ player1.player_positions }}</p>
+
+                <div class="mt-4 text-left space-y-2">
+                    <p v-for="stat in availableStats" :key="stat.value" class="font-semibold" :class="highlight(player1[stat.value], player2[stat.value])">
+                        <span v-if="selectedStats.includes(stat.value)">
+                            {{ stat.label }}: {{ parseFloat(player1[stat.value]).toFixed(2) }}
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Giocatore 2 -->
+            <div class="w-1/2 text-center">
+                <img :src="player2 ? player2.image : '${pageContext.request.contextPath}/' + default_player" class="w-40 mx-auto">
+                <h2 class="text-xl font-bold mt-2">{{ player2.name }}</h2>
+                <p class="text-gray-300">{{ player2.nationality_name }}</p>
+                <p class="bg-green-700 px-3 py-1 inline-block mt-2 rounded">{{ player2.player_positions }}</p>
+
+                <div class="mt-4 text-left space-y-2">
+                    <p v-for="stat in availableStats" :key="stat.value" class="font-semibold" :class="highlight(player2[stat.value], player1[stat.value])">
+                        <span v-if="selectedStats.includes(stat.value)">
+                            {{ stat.label }}: {{ parseFloat(player2[stat.value]).toFixed(2) }}
+                        </span>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
 
 <script src="${pageContext.request.contextPath}/js/compare.js"></script>

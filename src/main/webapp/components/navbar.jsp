@@ -13,7 +13,7 @@
                 </div>
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
-                        <a href="#" class="rounded-md bg-lime-700 px-3 py-2 text-sm font-medium text-white">Dashboard</a>
+                        <a href="homepagecontrol" class="rounded-md bg-lime-700 px-3 py-2 text-sm font-medium text-white">Dashboard</a>
 
                         <% if (utente != null) { %>
                         <a href="comparecontrol" class="rounded-md bg-lime-700 px-3 py-2 text-sm font-medium text-white">Comparazione giocatori</a>
