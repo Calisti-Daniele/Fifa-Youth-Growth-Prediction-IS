@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">Test di RealTimeSearchControl</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">feb 5, 2025 06:37:37 PM</span></a>
+<a href="#"><span class="badge badge-primary">feb 5, 2025 11:09:16 PM</span></a>
 </li>
 </ul>
 </div>
@@ -45,6 +45,16 @@
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('author-view')">
+<a id="nav-author" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-user"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
@@ -71,6 +81,18 @@
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
 </li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i></a>
+<ul id="author-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">JUnit+ExtentReports</a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">Export</a>
+</ul>
+</li>
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
@@ -79,9 +101,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Test Search Success</p>
+            <p class="name">testExportExcelSuccess()</p>
             <p class="text-sm">
-              <span>18:37:38</span> / <span>00:00:00:042</span>
+              <span>23:09:17</span> / <span>00:00:00:357</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -89,10 +111,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Test Search Success</h5>
-<span class='badge badge-success'>02.05.2025 18:37:38</span>
-<span class='badge badge-danger'>02.05.2025 18:37:38</span>
-<span class='badge badge-default'>00:00:00:042</span>
+<h5 class="test-status text-pass">testExportExcelSuccess()</h5>
+<span class='badge badge-success'>02.05.2025 23:09:17</span>
+<span class='badge badge-danger'>02.05.2025 23:09:18</span>
+<span class='badge badge-default'>00:00:00:357</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -104,30 +126,44 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>18:37:38</td>
+        <td>23:09:17</td>
         <td>
-          🟢 Inizio test ricerca giocatori con nome valido
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>18:37:38</td>
-        <td>
-          Input → Query: ronald
+          Input ricevuto: player1_name=John, player2_name=Doe, stats=[Goals, Assists]
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>18:37:38</td>
+        <td>23:09:18</td>
         <td>
-          ✅ Output atteso: JSON con giocatori trovati
+          Servlet eseguita con successo.
         </td>
       </tr>
       <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>18:37:38</td>
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>23:09:18</td>
         <td>
-          Risultato JSON: [{"name":"Ellery Ronald Balcombe","nationality_name":"England","image":"imageData","player_positions":"GK","overall":"61.11995315551758","defending":"31.662494659423828","shooting":"47.758209228515625","passing":"51.96918869018555","dribbling":"58.855220794677734","physic":"59.43425369262695"},{"name":"Fábio Ronaldo Costa Conceição","nationality_name":"Portugal","image":"imageData","player_positions":"LW, RW","overall":"60.158042907714844","defending":"27.15114402770996","shooting":"69.67139434814453","passing":"46.1747932434082","dribbling":"61.96835708618164","physic":"56.74763870239258"},{"name":"Ronaldo Damus","nationality_name":"Haiti","image":"imageData","player_positions":"ST","overall":"59.385719299316406","defending":"23.632997512817383","shooting":"56.16881561279297","passing":"40.96377944946289","dribbling":"57.48835372924805","physic":"59.50724792480469"},{"name":"Yerson Ronaldo Chacón Ramírez","nationality_name":"Venezuela","image":"imageData","player_positions":"RM, RW, LM","overall":"64.3592300415039","defending":"28.564334869384766","shooting":"64.32061767578125","passing":"58.778594970703125","dribbling":"66.61314392089844","physic":"37.73439407348633"}]
+          Foglio di lavoro generato correttamente.
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>23:09:18</td>
+        <td>
+          Intestazioni corrette: [Statistiche, John, Doe]
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>23:09:18</td>
+        <td>
+          Riga Goals verificata: [Goals, 10, 8]
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>23:09:18</td>
+        <td>
+          Riga Assists verificata: [Assists, 5, 7]
         </td>
       </tr>
   </tbody>
@@ -140,9 +176,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Test No Results Found</p>
+            <p class="name">testExportExcelFailMissingParameters()</p>
             <p class="text-sm">
-              <span>18:37:38</span> / <span>00:00:00:002</span>
+              <span>23:09:18</span> / <span>00:00:00:000</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -150,14 +186,42 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Test No Results Found</h5>
-<span class='badge badge-success'>02.05.2025 18:37:38</span>
-<span class='badge badge-danger'>02.05.2025 18:37:38</span>
-<span class='badge badge-default'>00:00:00:002</span>
+<h5 class="test-status text-pass">testExportExcelFailMissingParameters()</h5>
+<span class='badge badge-success'>02.05.2025 23:09:18</span>
+<span class='badge badge-danger'>02.05.2025 23:09:18</span>
+<span class='badge badge-default'>00:00:00:000</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+</div>
+</div>          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="3"
+          author="JUnit+ExtentReports"
+          tag="Export"
+          device="">
+          <div class="test-detail">
+            <p class="name">ExportExcelControl - Test Fallimento per Parametri Mancanti</p>
+            <p class="text-sm">
+              <span>23:09:18</span> / <span>00:00:00:004</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">ExportExcelControl - Test Fallimento per Parametri Mancanti</h5>
+<span class='badge badge-success'>02.05.2025 23:09:18</span>
+<span class='badge badge-danger'>02.05.2025 23:09:18</span>
+<span class='badge badge-default'>00:00:00:004</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">JUnit+ExtentReports</span>
+<span class="badge badge-pill badge-default">Export</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
@@ -165,30 +229,23 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>18:37:38</td>
+        <td>23:09:18</td>
         <td>
-          🟠 Inizio test ricerca con giocatore inesistente
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>18:37:38</td>
-        <td>
-          Input → Query: XYZPlayer
+          Input ricevuto: player1_name=null, player2_name=Doe, stats=[Goals]
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>18:37:38</td>
+        <td>23:09:18</td>
         <td>
-          ⚠️ Output atteso: Lista vuota '[]' per nessun risultato trovato
+          Servlet eseguita con parametri mancanti.
         </td>
       </tr>
       <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>18:37:38</td>
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>23:09:18</td>
         <td>
-          Risultato ottenuto: []
+          Errore HTTP 400 restituito correttamente.
         </td>
       </tr>
   </tbody>
@@ -205,24 +262,122 @@
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="container-fluid p-4 view dashboard-view">
+<div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">Export</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>Export</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>23:09:18 PM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>ExportExcelControl - Test Fallimento per Parametri Mancanti</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view author-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Author</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">JUnit+ExtentReports</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>JUnit+ExtentReports</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>23:09:18 PM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>ExportExcelControl - Test Fallimento per Parametri Mancanti</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
 <div class="row">
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>feb 5, 2025 06:37:37 PM</h3>
+<h3>feb 5, 2025 11:09:16 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>feb 5, 2025 06:37:38 PM</h3>
+<h3>feb 5, 2025 11:09:18 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Tests Passed</p>
-<h3>2</h3>
+<h3>3</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -245,7 +400,7 @@
 </div>
 <div class="card-footer">
 <div><small data-tooltip='100%'>
-<b>2</b> tests passed
+<b>3</b> tests passed
 </small>
 </div>
 <div>
@@ -267,10 +422,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='25%'><b>2</b> events passed</small></div>
+<div><small data-tooltip='77%'><b>7</b> events passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> events failed,
-<b data-tooltip='%'>6</b> others
+<b data-tooltip='%'>2</b> others
 </small>
 </div>
 </div>
@@ -286,10 +441,45 @@
 </div></div>
 <script>
 var timeline = {
-"Test Search Success":0.042,"Test No Results Found":0.002
+"testExportExcelSuccess()":0.357,"testExportExcelFailMissingParameters()":0,"ExportExcelControl - Test Fallimento per Parametri Mancanti":0.004
 };
 </script>
 <div class="row">
+<div class="col-lg-6 col-md-12 author-container">
+<div class="card">
+<div class="card-header"><p>Author</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead>
+<tbody>
+<tr>
+<td>JUnit+ExtentReports</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="col-lg-6 col-md-12 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>Export</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
 <div class="col-lg-6 col-md-12 sysenv-container">
 <div class="card">
 <div class="card-header"><p>System/Environment</p></div>
@@ -313,7 +503,7 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 2,
+passParent: 3,
 failParent: 0,
 warningParent: 0,
 skipParent: 0,
@@ -330,11 +520,11 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 2,
+passEvents: 7,
 failEvents: 0,
 warningEvents: 0,
 skipEvents: 0,
-infoEvents: 6
+infoEvents: 2
 };
 </script>        </div>
       </div>

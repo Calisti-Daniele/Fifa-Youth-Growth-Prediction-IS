@@ -13,7 +13,7 @@ import java.io.OutputStream;
 
 @WebServlet("/exportExcel")
 public class ExportExcelControl extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String player1Name = request.getParameter("player1_name");
         String player2Name = request.getParameter("player2_name");
         String[] stats = request.getParameterValues("stats[]");
