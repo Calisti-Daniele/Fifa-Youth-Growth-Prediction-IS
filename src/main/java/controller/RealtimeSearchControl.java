@@ -21,7 +21,7 @@ import java.util.List;
 public class RealtimeSearchControl extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Imposta il content type della risposta come JSON
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
@@ -55,6 +55,7 @@ public class RealtimeSearchControl extends HttpServlet {
             JsonArray jsonArray = new JsonArray();
 
             for (FifaPlayer player : players) {
+                System.out.println(player);
                 JsonObject jsonPlayer = new JsonObject();
                 jsonPlayer.addProperty("name", player.getNome());
                 jsonPlayer.addProperty("nationality_name", player.getNationalityName());
