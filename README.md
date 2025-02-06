@@ -56,5 +56,4 @@ Contributions, suggestions, and pull requests are always welcome! Feel free to e
 ---
 
 **Become the best virtual manager with the FIFA Youth Growth Prediction and discover the stars of tomorrow! 🌟⚽**
-```
 
